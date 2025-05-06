@@ -9,56 +9,13 @@ import {
     composeContext,
     generateObject,
 } from '@elizaos/core';
-import { XtreamlyAPI } from '../libs/XtreamlyAPI.ts';
-import { VolatilityAPI } from '../libs/VolatilityAPI.ts';
-import { z } from 'zod';
+import { XtreamlyAPI, VolatilityAPI } from '@xtreamlyio/sdk';
+import {
+    retrieveVolatilityStateTemplate,
+    RetrieveVolatilityPredictionSchema,
+    isRetrieveVolatilityPrediction
+} from './templates/retrieveVolatilityStateTemplate.ts';
 
-const retrieveVolatilityStateTemplate = `
-Extract query parameters for making an API call:
-- **symbol** (string, required): The symbol of the token.
-
-Supported symbols:
-- ETH
-- BTC
-
-Provide the details in the following JSON format:
-\`\`\`json
-{
-    "symbol": "<string>",
-}
-\`\`\`
-
-Example for fetching volatility for Ethereum:
-\`\`\`json
-{
-    "symbol": "ETH",
-}
-\`\`\`
-
-Example for fetching volatility for Bitcoin:
-\`\`\`json
-{
-    "symbol": "BTC",
-}
-\`\`\`
-
-Here are the recent user messages for context:
-{{recentMessages}}
-`;
-
-export interface RetrieveVolatilityPredictionReq {
-    symbol?: string;
-}
-
-export const RetrieveVolatilityPredictionSchema = z.object({
-    symbol: z.string(),
-});
-
-export const isRetrieveVolatilityPrediction = (
-    obj: unknown
-): obj is RetrieveVolatilityPredictionReq => {
-    return RetrieveVolatilityPredictionSchema.safeParse(obj).success;
-};
 
 export const retrieveVolatilityState: Action = {
     name: 'RETRIEVE_VOLATILITY_STATE',
@@ -72,7 +29,7 @@ export const retrieveVolatilityState: Action = {
             process.env.XTREAMLY_API_KEY = runtime.character.settings.secrets?.XTREAMLY_API_KEY;
         }
 
-        return process.env.XTREAMLY_API_KEY && new XtreamlyAPI().is_ok();
+        return process.env.XTREAMLY_API_KEY && new XtreamlyAPI().isOk();
     },
 
     handler: async (
@@ -128,7 +85,6 @@ export const retrieveVolatilityState: Action = {
             });
         }
     },
-
     examples: [
         [
             {

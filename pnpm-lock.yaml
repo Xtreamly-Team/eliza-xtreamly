@@ -54,6 +54,9 @@ importers:
       '@tavily/core':
         specifier: 0.0.2
         version: 0.0.2
+      '@xtreamlyio/sdk':
+        specifier: ^1.0.0
+        version: 1.0.0
       amqplib:
         specifier: 0.10.5
         version: 0.10.5
@@ -78,6 +81,9 @@ importers:
       ws:
         specifier: 8.18.0
         version: 8.18.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+      xtreamly-sdk:
+        specifier: github:Xtreamly-Team/xtreamly-ts-sdk
+        version: https://codeload.github.com/Xtreamly-Team/xtreamly-ts-sdk/tar.gz/cda87e8331721d3bb9bd7c296dd83d9ff674157b
       yargs:
         specifier: 17.7.2
         version: 17.7.2
@@ -3259,6 +3265,9 @@ packages:
   '@types/node@22.13.0':
     resolution: {integrity: sha512-ClIbNe36lawluuvq3+YYhnIN2CELi+6q8NpnM7PYp4hBn/TatfboPgVSm2rwKRfnV2M+Ty9GWDFI64KEe+kysA==}
 
+  '@types/node@22.15.11':
+    resolution: {integrity: sha512-rlyK0vuU7VLEYQfXuC7QTFxDvkb6tKhDI7wR4r6ZzM0k8BJd44W0jxo6xmUjqSs4AlYmiYfLJU2f0pAG/FtCRw==}
+
   '@types/node@22.7.5':
     resolution: {integrity: sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==}
 
@@ -3442,6 +3451,9 @@ packages:
   '@wallet-standard/features@1.1.0':
     resolution: {integrity: sha512-hiEivWNztx73s+7iLxsuD1sOJ28xtRix58W7Xnz4XzzA/pF0+aicnWgjOdA10doVDEDZdUuZCIIqG96SFNlDUg==}
     engines: {node: '>=16'}
+
+  '@xtreamlyio/sdk@1.0.0':
+    resolution: {integrity: sha512-0mSEalnxIi1s9isKpxF8vu24bk/Y3QDKWLi06/0+H4Sg66CeFc8UKBE1CVaQN/zFckCMXUhHEvh3a8eoNKVnDw==}
 
   '@zodios/core@10.9.6':
     resolution: {integrity: sha512-aH4rOdb3AcezN7ws8vDgBfGboZMk2JGGzEq/DtW65MhnRxyTGRuLJRWVQ/2KxDgWvV2F5oTkAS+5pnjKbl0n+A==}
@@ -4565,6 +4577,10 @@ packages:
 
   dotenv@16.4.7:
     resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
+    engines: {node: '>=12'}
+
+  dotenv@16.5.0:
+    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
     engines: {node: '>=12'}
 
   doublearray@0.0.2:
@@ -8064,6 +8080,11 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   uc.micro@2.1.0:
     resolution: {integrity: sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==}
 
@@ -8083,6 +8104,9 @@ packages:
 
   undici-types@6.20.0:
     resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
+
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   undici@6.19.8:
     resolution: {integrity: sha512-U8uCCl2x9TK3WANvmBavymRzxbfFYG+tAu+fgx3zxQy3qdagQqBLwJVrdyO1TBfUXvfKveMKJZhpvUYoOjM+4g==}
@@ -8535,6 +8559,10 @@ packages:
   xtend@4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
+
+  xtreamly-sdk@https://codeload.github.com/Xtreamly-Team/xtreamly-ts-sdk/tar.gz/cda87e8331721d3bb9bd7c296dd83d9ff674157b:
+    resolution: {tarball: https://codeload.github.com/Xtreamly-Team/xtreamly-ts-sdk/tar.gz/cda87e8331721d3bb9bd7c296dd83d9ff674157b}
+    version: 1.0.0
 
   y18n@5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
@@ -12162,7 +12190,7 @@ snapshots:
       bn-sqrt: 1.0.0
       bn.js: 5.2.1
       decimal.js: 10.4.3
-      dotenv: 16.4.7
+      dotenv: 16.5.0
       invariant: 2.2.4
     transitivePeerDependencies:
       - bufferutil
@@ -14069,7 +14097,7 @@ snapshots:
       '@solana/spl-token-metadata': 0.1.6(@solana/web3.js@1.98.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(fastestsmallesttextencoderdecoder@1.0.22)(typescript@5.6.3)
       '@solana/web3.js': 1.98.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       bs58: 6.0.0
-      dotenv: 16.4.7
+      dotenv: 16.5.0
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -14856,7 +14884,7 @@ snapshots:
 
   '@types/bn.js@5.1.6':
     dependencies:
-      '@types/node': 22.13.0
+      '@types/node': 22.15.11
 
   '@types/body-parser@1.19.5':
     dependencies:
@@ -14867,7 +14895,7 @@ snapshots:
     dependencies:
       '@types/http-cache-semantics': 4.0.4
       '@types/keyv': 3.1.4
-      '@types/node': 22.13.0
+      '@types/node': 22.15.11
       '@types/responselike': 1.0.3
 
   '@types/chrome@0.0.278':
@@ -14893,7 +14921,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.6':
     dependencies:
-      '@types/node': 22.13.0
+      '@types/node': 22.15.11
       '@types/qs': 6.9.18
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -14941,7 +14969,7 @@ snapshots:
 
   '@types/keyv@3.1.4':
     dependencies:
-      '@types/node': 22.13.0
+      '@types/node': 22.15.11
 
   '@types/mdast@4.0.4':
     dependencies:
@@ -14984,6 +15012,10 @@ snapshots:
     dependencies:
       undici-types: 6.20.0
 
+  '@types/node@22.15.11':
+    dependencies:
+      undici-types: 6.21.0
+
   '@types/node@22.7.5':
     dependencies:
       undici-types: 6.19.8
@@ -15006,7 +15038,7 @@ snapshots:
 
   '@types/responselike@1.0.3':
     dependencies:
-      '@types/node': 22.13.0
+      '@types/node': 22.15.11
 
   '@types/retry@0.12.0': {}
 
@@ -15040,11 +15072,11 @@ snapshots:
 
   '@types/ws@7.4.7':
     dependencies:
-      '@types/node': 22.13.0
+      '@types/node': 22.15.11
 
   '@types/ws@8.5.14':
     dependencies:
-      '@types/node': 22.13.0
+      '@types/node': 22.15.11
 
   '@types/yauzl@2.10.3':
     dependencies:
@@ -15237,6 +15269,12 @@ snapshots:
   '@wallet-standard/features@1.1.0':
     dependencies:
       '@wallet-standard/base': 1.1.0
+
+  '@xtreamlyio/sdk@1.0.0':
+    dependencies:
+      '@types/node': 22.15.11
+      dotenv: 16.5.0
+      typescript: 5.8.3
 
   '@zodios/core@10.9.6(axios@1.7.9)(zod@3.24.4)':
     dependencies:
@@ -16456,6 +16494,8 @@ snapshots:
   dotenv@16.4.5: {}
 
   dotenv@16.4.7: {}
+
+  dotenv@16.5.0: {}
 
   doublearray@0.0.2: {}
 
@@ -17792,7 +17832,7 @@ snapshots:
       '@noble/ed25519': 1.7.3
       '@solana/web3.js': 1.77.4(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       agentkeepalive: 4.6.0
-      dotenv: 16.4.7
+      dotenv: 16.5.0
       jayson: 4.1.3(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       node-fetch: 2.7.0
       superstruct: 1.0.4
@@ -20589,6 +20629,8 @@ snapshots:
 
   typescript@5.6.3: {}
 
+  typescript@5.8.3: {}
+
   uc.micro@2.1.0: {}
 
   uglify-js@3.19.3:
@@ -20604,6 +20646,8 @@ snapshots:
   undici-types@6.19.8: {}
 
   undici-types@6.20.0: {}
+
+  undici-types@6.21.0: {}
 
   undici@6.19.8: {}
 
@@ -21072,6 +21116,12 @@ snapshots:
   xsalsa20@1.2.0: {}
 
   xtend@4.0.2: {}
+
+  xtreamly-sdk@https://codeload.github.com/Xtreamly-Team/xtreamly-ts-sdk/tar.gz/cda87e8331721d3bb9bd7c296dd83d9ff674157b:
+    dependencies:
+      '@types/node': 22.15.11
+      dotenv: 16.5.0
+      typescript: 5.8.3
 
   y18n@5.0.8: {}
 
