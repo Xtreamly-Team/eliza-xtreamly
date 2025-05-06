@@ -9,27 +9,22 @@ import {
     composeContext,
     generateObject,
 } from '@elizaos/core';
-import {XtreamlyAPI, VolatilityAPI, Symbols} from '@xtreamlyio/sdk';
+import { XtreamlyAPI, VolatilityAPI } from '@xtreamlyio/sdk';
 import {
-    retrieveVolatilityStateTemplate,
-    RetrieveVolatilityPredictionSchema,
-    isRetrieveVolatilityPrediction
-} from './templates/retrieveVolatilityStateTemplate.ts';
+    openLoopTradingTemplate,
+    OpenLoopTradingSchema,
+    isOpenLoopTrading
+} from './templates/openLoopTradingTemplate.ts';
 
 
-export const retrieveVolatilityState: Action = {
-    name: 'RETRIEVE_VOLATILITY_STATE',
-    similes: ['RETRIEVE_LIVE_VOLATILITY_STATE'],
-    description: 'Retrieve live volatility state of a given symbol.',
+export const openLoopTrading: Action = {
+    name: 'OPEN_LOOP_TRADING',
+    similes: ['OPEN_LOOP_TRADING'],
+    description: 'Opens a new loop trading strategy.',
 
     validate: async (runtime: IAgentRuntime, _message: Memory) => {
-        elizaLogger.log('Validating runtime for RETRIEVE_VOLATILITY_STATE...');
-
-        if (runtime.character.settings.secrets?.XTREAMLY_API_KEY) {
-            process.env.XTREAMLY_API_KEY = runtime.character.settings.secrets?.XTREAMLY_API_KEY;
-        }
-
-        return process.env.XTREAMLY_API_KEY && new XtreamlyAPI().isOk();
+        elizaLogger.log('Validating runtime for OPEN_LOOP_TRADING...');
+        return true;
     },
 
     handler: async (
@@ -50,17 +45,17 @@ export const retrieveVolatilityState: Action = {
 
             const context = composeContext({
                 state: currentState,
-                template: retrieveVolatilityStateTemplate,
+                template: openLoopTradingTemplate,
             });
 
             const queryParams = await generateObject({
                 runtime,
                 context,
                 modelClass: ModelClass.LARGE,
-                schema: RetrieveVolatilityPredictionSchema,
+                schema: OpenLoopTradingSchema,
             });
 
-            if (!isRetrieveVolatilityPrediction(queryParams.object)) {
+            if (!isOpenLoopTrading(queryParams.object)) {
                 callback(
                     {
                         text: 'Invalid query params. Please check the inputs.',
@@ -70,18 +65,22 @@ export const retrieveVolatilityState: Action = {
                 return;
             }
 
-            const { symbol } = queryParams.object;
+            const {
+                amount,
+                stopLoss,
+                risk
+            } = queryParams.object;
 
-            elizaLogger.log('Querying volatility state for:', symbol);
-            const prediction = await new VolatilityAPI().state(symbol as Symbols);
+            elizaLogger.log(`Opening a loop trading strategy for: amount ${amount} stopLoss ${stopLoss} high risk ${risk}` );
+            // const prediction = await new VolatilityAPI().state(symbol);
             
             callback({
-                text: prediction.classification_description,
+                text: `Opened a loop trading strategy for: $${amount} | stopLoss ${stopLoss}% | ${risk ? 'high' : 'low'} risk`,
             });
         } catch (error) {
             elizaLogger.error('Error in retrieveVolatilityState:', error.message);
             callback({
-                text: '❌ An error occurred while retrieving Xtreamly volatility state. Please try again later.',
+                text: '❌ An error occurred while opening your loop trading position. Please try again later.',
             });
         }
     },
@@ -90,14 +89,14 @@ export const retrieveVolatilityState: Action = {
             {
                 user: 'user',
                 content: {
-                    text: 'Retrieve Ethereum market volatility state.',
-                    action: 'RETRIEVE_VOLATILITY_STATE',
+                    text: 'Open my loop trading position for $1000, with stop loss 14 and be risky.',
+                    action: 'OPEN_LOOP_TRADING',
                 },
             },
             {
                 user: 'assistant',
                 content: {
-                    text: 'ETH price in highly volatile short momentum, requiring protective measures and caution.',
+                    text: 'Opened a loop trading strategy for: amount $1000 | stopLoss 14% | high risk true',
                 },
             },
         ],
